@@ -5,10 +5,14 @@ import "./App.css";
 import { CustomerItem } from "./CustomerItem";
 import { CreateUserForm } from "./CreateUserForm";
 import { ResponsiveAppBar } from "./AppBar";
+import { JokeItem } from "./JokeItem";
+import { CreatejokeForm } from "./CreatejokeForm";
+import { JokeList } from "./JokeList";
+
 
 function App() {
   const [customers, setCustomers] = useState([]);
-  const [trades, setTrades] = useState([]);
+  const [jokes, setJokes] = useState([]);
 
 
   useEffect(() => {
@@ -20,17 +24,17 @@ function App() {
       setCustomers(json);
     };
 
-    const fetchTradeData = async () => {
+    const fetchJokeData = async () => {
       const data = await fetch(
         "https://ondeck-backend12.herokuapp.com/api/jokes"
       );
 
       const json = await data.json();
 
-      setTrades(json);
+      setJokes(json);
     };
 
-    fetchTradeData();
+    fetchJokeData();
     fetchCustomerData();
   }, []);
 
@@ -39,14 +43,16 @@ function App() {
   }, [customers]);
 
   useEffect(() => {
-    console.log({ trades });
-  }, [trades]);
+    console.log({ jokes });
+  }, [jokes]);
   
   return (
     <div className="App">
       <ResponsiveAppBar/>
-      <CreateUserForm />
-      <List items={customers} component={CustomerItem} />
+      {/* <CreateUserForm />
+      <List items={customers} component={CustomerItem} /> */}
+      <CreatejokeForm/>
+      <JokeList items={jokes} component ={JokeItem} />
     </div>
   );
 };
