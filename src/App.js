@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-import { List } from "./List";
 import "./App.css";
-// import { JokeItem } from "./JokeItem";
-import { CustomerItem } from "./CustomerItem";
-import { CreateUserForm } from "./CreateUserForm";
 import { ResponsiveAppBar } from "./AppBar";
 import { JokeItem } from "./JokeItem";
 import { CreatejokeForm } from "./CreatejokeForm";
@@ -49,8 +45,6 @@ function App() {
   return (
     <div className="App">
       <ResponsiveAppBar/>
-      {/* <CreateUserForm />
-      <List items={customers} component={CustomerItem} /> */}
       <CreatejokeForm/>
       <JokeList items={jokes} component ={JokeItem} />
     </div>
